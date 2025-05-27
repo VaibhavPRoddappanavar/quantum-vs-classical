@@ -1,26 +1,294 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #ffffff;
+  --gradient-1: #0a0f22;
+  --gradient-2: #1a1155;
+  --gradient-3: #2d1f7a;
+  --gradient-4: #0e0d2e;
+  --accent-1: #6366f1;
+  --accent-2: #8b5cf6;
+  --accent-3: #4f46e5;
+  --glow-color: rgba(139, 92, 246, 0.6);
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3), var(--gradient-4));
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 35%, var(--accent-2) 0%, transparent 20%),
+    radial-gradient(circle at 75% 44%, var(--accent-1) 0%, transparent 17%),
+    radial-gradient(circle at 46% 85%, var(--accent-3) 0%, transparent 12%);
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Star background effect */
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(1px 1px at 25% 15%, white, transparent),
+    radial-gradient(1px 1px at 50% 40%, white, transparent),
+    radial-gradient(1.5px 1.5px at 15% 25%, white, transparent),
+    radial-gradient(1.5px 1.5px at 60% 80%, white, transparent),
+    radial-gradient(1px 1px at 70% 50%, white, transparent),
+    radial-gradient(2px 2px at 85% 15%, white, transparent),
+    radial-gradient(2.5px 2.5px at 10% 60%, white, transparent),
+    radial-gradient(1px 1px at 90% 65%, white, transparent),
+    radial-gradient(1.5px 1.5px at 33% 92%, white, transparent),
+    radial-gradient(1px 1px at 75% 10%, white, transparent),
+    radial-gradient(2px 2px at 55% 25%, white, transparent),
+    radial-gradient(1px 1px at 30% 65%, white, transparent),
+    radial-gradient(1.5px 1.5px at 40% 80%, white, transparent),
+    radial-gradient(1px 1px at 80% 95%, white, transparent);
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Twinkling stars animation */
+@keyframes twinkle {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}
+
+/* Shimmer animation for visualization placeholders */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Panel hover animation */
+@keyframes panel-glow {
+  0% {
+    box-shadow: 0 0 5px 0 rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(99, 102, 241, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px 0 rgba(99, 102, 241, 0.3);
+  }
+}
+
+/* Spinner animation */
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 40% 70%, white, transparent),
+    radial-gradient(2.5px 2.5px at 60% 20%, white, transparent),
+    radial-gradient(2px 2px at 80% 40%, white, transparent),
+    radial-gradient(2px 2px at 10% 80%, white, transparent),
+    radial-gradient(2.5px 2.5px at 45% 50%, white, transparent),
+    radial-gradient(2px 2px at 75% 75%, white, transparent);
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+/* Animated Background */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glitch Text Effect */
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                0.05em 0 0 rgba(0, 255, 0, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                0.05em 0 0 rgba(0, 255, 0, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+                -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+}
+
+/* Glow Effect */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px 0 var(--glow-color);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px var(--glow-color);
+  }
+  100% {
+    box-shadow: 0 0 5px 0 var(--glow-color);
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@layer components {
+  .glitch-text {
+    @apply relative inline-block;
+    animation: glitch 2.5s infinite;
+    animation-play-state: paused;
+  }
+  
+  .glitch-text:hover {
+    animation-play-state: running;
+  }
+  
+  .glow-button {
+    @apply relative overflow-hidden transition-all duration-300;
+    animation: glow 3s infinite;
+  }
+  
+  .glow-button:hover {
+    @apply transform scale-105;
+    animation: glow 1.5s infinite;
+  }
+  
+  .pulse-effect {
+    animation: pulse 3s infinite ease-in-out;
+  }
+  
+  /* Accessibility focus styles */
+  .focus-visible-ring {
+    @apply outline-none transition-all duration-200;
+  }
+  
+  .focus-visible-ring:focus-visible {
+    @apply ring-2 ring-indigo-500 ring-offset-2 ring-offset-black;
+  }
+  
+  /* Shimmer effect for visualization placeholders */
+  .shimmer-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.05) 75%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite linear;
+  }
+  
+  /* Spinner animation for loading states */
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid rgba(139, 92, 246, 0.1);
+    border-top-color: rgba(139, 92, 246, 0.8);
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Panel hover effect */
+  .panel-hover {
+    @apply transition-all duration-300;
+  }
+  
+  .panel-hover:hover {
+    @apply transform scale-[1.01];
+    animation: panel-glow 3s infinite;
+  }
+  
+  /* Spinner for loading states */
+  .spinner {
+    @apply w-8 h-8 border-4 border-indigo-200 border-t-indigo-500 rounded-full;
+    animation: spinner 1.5s linear infinite;
+  }
 }
