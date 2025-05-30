@@ -8,50 +8,85 @@ import QuantumFactorization from '../../components/QuantumFactorization';
 import PerformanceComparison from '../../components/PerformanceComparison';
 
 export default function FactorizationPage() {
-  const [number, setNumber] = useState(15);
+  const [number, setNumber] = useState('15');
   const [results, setResults] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [maxSteps, setMaxSteps] = useState(0);
+  const [error, setError] = useState('');
 
   const classicalFactorization = (n) => {
     const steps = [];
     const factors = [];
     let currentNumber = n;
-    let divisor = 2;
     let stepCount = 0;
 
-    while (currentNumber > 1) {
-      const isDivisible = currentNumber % divisor === 0;
-      stepCount++;
-
-      steps.push({
-        divisor,
-        number: currentNumber,
-        is_factor: isDivisible,
-        message: `Is ${currentNumber} divisible by ${divisor}?`,
-        result: isDivisible ? '✅' : '❌'
-      });
-
-      if (isDivisible) {
-        factors.push(divisor);
-        currentNumber = currentNumber / divisor;
-        steps[steps.length - 1].new_number = currentNumber;
-      } else {
-        divisor++;
+    // Generate prime numbers up to sqrt(n) using Sieve of Eratosthenes
+    const maxPrime = Math.floor(Math.sqrt(n));
+    const sieve = new Array(maxPrime + 1).fill(true);
+    sieve[0] = sieve[1] = false;
+    
+    for (let i = 2; i * i <= maxPrime; i++) {
+      if (sieve[i]) {
+        for (let j = i * i; j <= maxPrime; j += i) {
+          sieve[j] = false;
+        }
       }
+    }
 
-      // Safety check for very large numbers
-      if (stepCount > 100) {
+    // Get list of primes
+    const primes = [];
+    for (let i = 2; i <= maxPrime; i++) {
+      if (sieve[i]) primes.push(i);
+    }
+
+    // Try dividing by each prime
+    for (const divisor of primes) {
+      while (currentNumber > 1) {
+        const isDivisible = currentNumber % divisor === 0;
+        stepCount++;
+
         steps.push({
-          divisor: '...',
+          divisor,
           number: currentNumber,
-          is_factor: false,
-          message: 'Number too large for demonstration',
-          result: '⚠️'
+          is_factor: isDivisible,
+          message: `Is ${currentNumber} divisible by ${divisor}?`,
+          result: isDivisible ? '✅' : '❌'
         });
-        break;
+
+        if (isDivisible) {
+          factors.push(divisor);
+          currentNumber = currentNumber / divisor;
+          steps[steps.length - 1].new_number = currentNumber;
+        } else {
+          break;
+        }
+
+        // Safety check for very large numbers
+        if (stepCount > 100) {
+          steps.push({
+            divisor: '...',
+            number: currentNumber,
+            is_factor: false,
+            message: 'Number too large for demonstration',
+            result: '⚠️'
+          });
+          return { steps, factors, total_steps: stepCount };
+        }
       }
+    }
+
+    // If there's still a number left, it must be prime
+    if (currentNumber > 1) {
+      steps.push({
+        divisor: currentNumber,
+        number: currentNumber,
+        is_factor: true,
+        message: `${currentNumber} is prime`,
+        result: '✅'
+      });
+      factors.push(currentNumber);
+      stepCount++;
     }
 
     return { steps, factors, total_steps: stepCount };
@@ -276,9 +311,23 @@ export default function FactorizationPage() {
   };
 
   const runFactorization = async () => {
+    // Validate input
+    if (!number.trim()) {
+      setError('Please enter a number to factorize');
+      return;
+    }
+    
+    const num = parseInt(number);
+    if (isNaN(num) || num <= 1) {
+      setError('Please enter a valid number greater than 1');
+      return;
+    }
+
+    // Clear error and start factorization
+    setError('');
     setIsAnimating(true);
     setCurrentStep(0);
-    const results = simulateFactorization(number);
+    const results = simulateFactorization(num);
     setResults(results);
     setMaxSteps(Math.max(results.classical.steps.length, results.quantum.steps.length));
 
@@ -310,11 +359,20 @@ export default function FactorizationPage() {
             <input
               type="number"
               value={number}
-              onChange={(e) => setNumber(parseInt(e.target.value) || 15)}
+              onChange={(e) => {
+                setNumber(e.target.value);
+                setError('');
+              }}
               className="bg-gray-700 text-white px-4 py-2 rounded"
               min="2"
               disabled={isAnimating}
+              placeholder="Enter a number > 1"
             />
+            {error && (
+              <div className="text-red-500 text-sm mt-2">
+                {error}
+              </div>
+            )}
             <button
               onClick={runFactorization}
               disabled={isAnimating}
