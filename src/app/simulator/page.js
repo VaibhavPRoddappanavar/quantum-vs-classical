@@ -39,8 +39,40 @@ export default function SimulatorPage() {
           <div className="h-1 w-64 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto mt-2 rounded-full"></div>
         </motion.div>
         
-        {/* Problem Selector Component */}
-        <ProblemSelector />
+        {/* Problem Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {/* Search Algorithm Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-gradient-to-br from-indigo-900/50 to-purple-900/50 p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all"
+          >
+            <Link href="/simulator/search" className="block">
+              <h2 className="text-2xl font-bold mb-4">Search Algorithm</h2>
+              <p className="text-gray-300 mb-4">Compare classical and quantum search algorithms and visualize their performance differences.</p>
+              <div className="flex justify-end">
+                <span className="text-blue-400 hover:text-blue-300 transition-colors">Explore →</span>
+              </div>
+            </Link>
+          </motion.div>
+
+          {/* Factorization Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-gradient-to-br from-indigo-900/50 to-purple-900/50 p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all"
+          >
+            <Link href="/simulator/factorization" className="block">
+              <h2 className="text-2xl font-bold mb-4">Integer Factorization</h2>
+              <p className="text-gray-300 mb-4">Experience the power of Shor's algorithm compared to classical factorization methods.</p>
+              <div className="flex justify-end">
+                <span className="text-blue-400 hover:text-blue-300 transition-colors">Explore →</span>
+              </div>
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </main>
   );
