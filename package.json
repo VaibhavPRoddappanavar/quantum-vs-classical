@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/font": "^14.2.15",
     "chart.js": "^4.4.9",
+    "cytoscape": "^3.32.0",
     "framer-motion": "^12.15.0",
     "inter": "^2.1.0",
     "next": "15.3.2",

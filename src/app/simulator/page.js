@@ -57,6 +57,22 @@ export default function SimulatorPage() {
             </Link>
           </motion.div>
 
+          {/* Shortest Path (Graph) Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-gradient-to-br from-indigo-900/50 to-purple-900/50 p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all"
+          >
+            <Link href="/simulator/graph" className="block">
+              <h2 className="text-2xl font-bold mb-4">Shortest Path Problem</h2>
+              <p className="text-gray-300 mb-4">Compare DFS and a quantum-inspired approach for finding shortest paths in graphs. Visualize the difference in node exploration and speedup.</p>
+              <div className="flex justify-end">
+                <span className="text-blue-400 hover:text-blue-300 transition-colors">Explore →</span>
+              </div>
+            </Link>
+          </motion.div>
+
           {/* Factorization Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

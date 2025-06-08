@@ -46,7 +46,7 @@ export default function Home() {
           transition={{ delay: 0.4, duration: 0.8 }}
         >
           <GlowButton primary>
-            Explore Algorithms
+            Learn About Quantum Computing
           </GlowButton>
           <GlowButton as="a" href="/simulator">
             View Simulations

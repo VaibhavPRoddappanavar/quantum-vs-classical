@@ -15,6 +15,15 @@ const problems = [
     isAvailable: true
   },
   {
+    id: 'linear-equations',
+    title: 'Linear Equations',
+    description: 'Compare classical Gaussian Elimination with quantum HHL Algorithm',
+    path: '/simulator/linear-equations',
+    classicalAlgorithm: 'Gaussian Elimination (O(n³))',
+    quantumAlgorithm: 'HHL Algorithm (O(log n))',
+    isAvailable: true
+  },
+  {
     id: 'factoring',
     title: 'Integer Factorization',
     description: 'Compare classical factoring algorithms with Shor\'s quantum algorithm',
@@ -31,6 +40,15 @@ const problems = [
     classicalAlgorithm: 'Simulated Annealing (O(e^n))',
     quantumAlgorithm: 'QAOA (Polynomial)',
     isAvailable: false
+  },
+  {
+    id: 'graph',
+    title: 'Shortest Path Problem',
+    description: 'Compare BFS with a quantum-inspired approach on graphs',
+    path: '/simulator/graph',
+    classicalAlgorithm: 'BFS (O(V+E))',
+    quantumAlgorithm: 'Quantum Walk (simulated)',
+    isAvailable: true
   }
 ];
 
@@ -53,14 +71,14 @@ const ProblemSelector = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {problems.map((problem) => (
-          <div
-            key={problem.id}
-            className={`relative bg-black/30 rounded-lg border overflow-hidden ${
-              problem.isAvailable 
-                ? 'border-indigo-500/30 cursor-pointer' 
-                : 'border-gray-700/30 opacity-60'
-            }`}
-          >
+           <div
+             key={problem.id}
+             className={`relative bg-black/30 rounded-lg border overflow-hidden ${
+               problem.isAvailable 
+                 ? 'border-indigo-500/30 cursor-pointer' 
+                 : 'border-gray-700/30 opacity-60'
+             }`}
+           >
             {!problem.isAvailable && (
               <div className="absolute top-2 right-2 bg-gray-800 text-xs text-gray-300 px-2 py-1 rounded-full">
                 Coming Soon
