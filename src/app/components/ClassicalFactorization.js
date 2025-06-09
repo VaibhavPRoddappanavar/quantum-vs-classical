@@ -38,6 +38,8 @@ export default function ClassicalFactorization({ steps, currentStep }) {
       </div>
       <div className="mt-4 text-sm text-gray-400">
         Time Complexity: O(√n)
+        <br />
+        Space Complexity: O(1)
       </div>
     </div>
   );

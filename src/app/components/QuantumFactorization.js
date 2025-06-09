@@ -114,6 +114,8 @@ const QuantumFactorization = ({ steps, currentStep }) => {
       </div>
       <div className="mt-4 text-sm text-gray-400">
         Time Complexity: O((log n)³)
+        <br />
+        Space Complexity: O((log n)^2)
       </div>
     </div>
   );

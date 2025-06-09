@@ -175,7 +175,8 @@ const QuantumGroverSearch = ({
         <p>
           Grover's algorithm uses quantum superposition and amplitude amplification to find the target.
           <br />
-          <span className="text-indigo-300 font-medium">Time Complexity: O(√n)</span>
+          <span className="text-indigo-300 font-medium">Time Complexity: O(√n)</span><br />
+          <span className="text-green-300 font-medium">Space Complexity: O(√n)</span>
         </p>
       </div>
       

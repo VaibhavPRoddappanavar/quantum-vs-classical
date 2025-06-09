@@ -477,6 +477,20 @@ const ShortestPathVisualizer = ({ onComplete }) => {
             <div className="mt-2 text-indigo-100">
               <b>Comparison:</b> DFS can be inefficient on graphs with many branches or dead-ends, while quantum-inspired parallel search can reach the goal in fewer steps by exploring all possibilities at each layer simultaneously.
             </div>
+            <div className="mt-6">
+              <h4 className="font-bold mb-2 text-indigo-200">Space Complexity Analysis</h4>
+              <div className="mb-2">
+                <span className="font-semibold">DFS (Classical):</span> <span className="text-indigo-100">O(V)</span> <br />
+                <span className="text-sm text-indigo-300">DFS uses stack space proportional to the maximum depth of the search, which is O(V) in the worst case for a graph with V vertices.</span>
+              </div>
+              <div className="mb-2">
+                <span className="font-semibold">Quantum-inspired (Parallel BFS):</span> <span className="text-indigo-100">O(V)</span> <br />
+                <span className="text-sm text-indigo-300">Parallel BFS maintains a queue of nodes at each layer, requiring space up to O(V) for the largest layer. Quantum algorithms theoretically require space for superpositions, but in classical simulation this is O(V).</span>
+              </div>
+              <div className="mt-2 text-indigo-100">
+                <b>Comparison:</b> Both DFS and quantum-inspired algorithms require space proportional to the number of nodes, but quantum algorithms may have additional overhead in true quantum implementations.
+              </div>
+            </div>
           </div>
         </div>
       )}

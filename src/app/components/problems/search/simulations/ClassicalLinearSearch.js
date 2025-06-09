@@ -125,7 +125,8 @@ const ClassicalLinearSearch = ({
         <p>
           Linear Search checks each element sequentially until it finds the target or reaches the end.
           <br />
-          <span className="text-indigo-300 font-medium">Time Complexity: O(n)</span>
+          <span className="text-indigo-300 font-medium">Time Complexity: O(n)</span><br />
+          <span className="text-green-300 font-medium">Space Complexity: O(1)</span>
         </p>
       </div>
       
