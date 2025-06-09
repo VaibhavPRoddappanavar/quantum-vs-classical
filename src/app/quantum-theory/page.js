@@ -1,8 +1,13 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function QuantumTheoryOverview() {
   return (
-    <div className="flex flex-col items-center justify-center text-center min-h-[70vh]">
+      <div className="flex flex-col items-center justify-center text-center min-h-[70vh]">
+              <div className="flex justify-center w-full">
+                <Link href="/" className="mb-6 px-5 py-2 rounded-lg bg-[#232946] text-[#ffd700] font-semibold shadow hover:bg-[#393e46] transition">← Back to Home</Link>
+              </div>
+
       <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#7fdbff] to-[#ffd700] bg-clip-text text-transparent drop-shadow-lg">Quantum Theory Hub</h1>
       <p className="text-lg md:text-2xl text-gray-300 max-w-2xl mb-10">
         Welcome to the Quantum Theory section! Dive into the fascinating world of quantum computing, its algorithms, foundational concepts, and curated resources.
@@ -25,7 +30,6 @@ export default function QuantumTheoryOverview() {
           <span className="text-gray-200">Videos, images, and learning links.</span>
         </a>
       </div>
-      
     </div>
   );
 }

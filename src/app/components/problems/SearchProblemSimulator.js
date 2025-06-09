@@ -28,7 +28,7 @@ const itemVariants = {
 
 const SearchProblemSimulator = () => {
   // State for problem inputs
-  const [inputArray, setInputArray] = useState("");
+  const [inputArray, setInputArray] = useState('["101", "99", "42", "1337", "512"]');
   const [targetValue, setTargetValue] = useState("");
   const [isValidInput, setIsValidInput] = useState(false);
   

@@ -1,8 +1,12 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function ResourcesPage() {
   return (
     <div>
+      <div className="flex justify-center w-full">
+        <Link href="/" className="mb-6 px-5 py-2 rounded-lg bg-[#232946] text-[#ffd700] font-semibold shadow hover:bg-[#393e46] transition">← Back to Home</Link>
+      </div>
       <h1 className="text-3xl font-bold mb-6 text-[#c2e9fb]">Quantum Resources</h1>
       {/* Video Resources Section */}
       <h2 className="text-2xl font-bold mb-4 mt-8 text-[#7fdbff]">Video Resources</h2>

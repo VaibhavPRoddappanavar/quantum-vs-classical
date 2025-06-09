@@ -88,6 +88,22 @@ export default function SimulatorPage() {
               </div>
             </Link>
           </motion.div>
+
+          {/* Quantum Coin Toss Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="bg-gradient-to-br from-indigo-900/50 to-purple-900/50 p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all"
+          >
+            <Link href="/simulator/quantum-coin-toss" className="block">
+              <h2 className="text-2xl font-bold mb-4">Quantum Coin Toss</h2>
+              <p className="text-gray-300 mb-4">Experience true randomness: compare a classical coin toss with a quantum coin toss (Hadamard on |0⟩, then measure) and visualize the results beautifully.</p>
+              <div className="flex justify-end">
+                <span className="text-blue-400 hover:text-blue-300 transition-colors">Explore →</span>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </main>

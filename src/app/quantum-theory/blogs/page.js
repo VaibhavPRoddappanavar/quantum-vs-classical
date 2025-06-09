@@ -1,8 +1,13 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function BlogsPage() {
   return (
-    <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto">
+              <div className="flex justify-center w-full">
+        <Link href="/" className="mb-6 px-5 py-2 rounded-lg bg-[#232946] text-[#ffd700] font-semibold shadow hover:bg-[#393e46] transition">← Back to Home</Link>
+      </div>
+
       <h1 className="text-4xl md:text-5xl font-bold mb-8 text-[#ffd700] text-center drop-shadow">What is Quantum Computing?</h1>
       <div className="bg-black/30 rounded-2xl p-8 shadow-lg mb-10">
         <p className="text-lg text-gray-200 mb-4">

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const articles = [
   {
@@ -51,7 +52,11 @@ function truncate(str, n) {
 
 export default function ArticlesPage() {
   return (
-    <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto">
+              <div className="flex justify-center w-full">
+        <Link href="/" className="mb-6 px-5 py-2 rounded-lg bg-[#232946] text-[#ffd700] font-semibold shadow hover:bg-[#393e46] transition">← Back to Home</Link>
+      </div>
+
       <h1 className="text-4xl md:text-5xl font-bold mb-10 text-[#ff7f50] text-center drop-shadow">Quantum Computing Articles</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map((article, idx) => (

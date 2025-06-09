@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const quantumAlgorithms = [
   {
@@ -39,6 +40,9 @@ const quantumAlgorithms = [
 export default function AlgorithmsPage() {
   return (
     <div>
+      <div className="flex justify-center w-full">
+        <Link href="/" className="mb-6 px-5 py-2 rounded-lg bg-[#232946] text-[#ffd700] font-semibold shadow hover:bg-[#393e46] transition">← Back to Home</Link>
+      </div>
       <h1 className="text-3xl font-bold mb-6 text-[#a1ffce]">Quantum Algorithms</h1>
       <div className="grid md:grid-cols-3 gap-8">
         {quantumAlgorithms.map((algo, i) => (
